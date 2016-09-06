@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.5" client="site" method="upgrade">
+	<name>mod_alcycle2</name>
+    <author>Daniel Vila</author>
+    <creationDate>22/08/2016</creationDate>
+    <copyright>Copyright (C) 2016. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>danielvila@outlook.com</authorEmail>
+    <authorUrl>http://www.isipma.com</authorUrl>
+    <version>2.2</version>
+    <description>MOD_ALCYCLE2_DESCRIPTION</description>
+	<files>
+    	<filename module="mod_alcycle2">mod_alcycle2.php</filename>
+		<filename>helper.php</filename>
+    	<filename>mod_alcycle2.xml</filename>
+		<folder>fields</folder>
+		<folder>language</folder>
+		<folder>tmpl</folder>
+    </files>
+    <media destination="mod_alcycle2" folder="media">
+    	<folder>css</folder>
+    	<folder>js</folder>
+		<folder>images</folder>
+	</media>
+    <languages folder="language">
+        <language tag="es-ES">es-ES.mod_alcycle2.ini</language>
+        <language tag="es-ES">es-ES.mod_alcycle2.sys.ini</language>
+    </languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="efecto" type="list" class="chzn-color" default="carousel" label="MOD_ALCYCLE2_EFECTO" description="MOD_ALCYCLE2_EFECTO_DESC">
+					<option value="carousel">Carousel</option>
+					<option value="flipHorz">flipHorz</option>
+					<option value="flipVert">flipVert</option>
+					<option value="scrollHorz">scrollHorz</option>
+					<option value="scrollVert">scrollVert</option>
+					<option value="shuffle">shuffle</option>
+					<option value="tileBlind">tileBlind</option>
+					<option value="tileSlide">tileSlide</option>
+				</field>
+				<field name="reverse" type="radio" showon="efecto:shuffle" class="btn-group btn-group-yesno" default="0" label="MOD_ALCYCLE2_REVERSE" description="MOD_ALCYCLE2_REVERSE_DESC">
+					<option value="1">true</option>
+					<option value="0">false</option>
+				</field>
+				<field name="play" type="radio" class="btn-group btn-group-yesno" default="1" label="MOD_ALCYCLE2_PLAY" description="MOD_ALCYCLE2_PLAY_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="timeout" type="text" showon="play:1" default="1000" label="MOD_ALCYCLE2_TIMEOUT" description="MOD_ALCYCLE2_TIMEOUT_DESC" class="validate-numeric" filter="integer" />
+				<field name="fluid" type="radio" class="btn-group btn-group-yesno" showon="efecto:carousel" default="0" label="MOD_ALCYCLE2_FLUID" description="MOD_ALCYCLE2_FLUID_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="visible" type="text" showon="efecto:carousel" default="0" label="MOD_ALCYCLE2_VISIBLE" description="MOD_ALCYCLE2_VISIBLE_DESC" class="validate-numeric" filter="integer" />
+				<field name="rows" type="radio" class="btn-group btn-group-yesno" default="0" label="MOD_ALCYCLE2_ROWS" description="MOD_ALCYCLE2_ROWS_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="pager" type="radio" class="btn-group btn-group-yesno" default="0" label="MOD_ALCYCLE2_PAGER" description="MOD_ALCYCLE2_PAGER_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="numdiap" type="radio" class="btn-group btn-group-yesno" default="0" label="MOD_ALCYCLE2_NUMERO_DIAPOSITIVA" description="MOD_ALCYCLE2_NUMERO_DIAPOSITIVA_DESC">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="efecnumdiap" type="list" showon="numdiap:1" class="chzn-color" default="fade" label="MOD_ALCYCLE2_NUMERO_DIAPOSITIVA_EFECTO" description="MOD_ALCYCLE2_NUMERO_DIAPOSITIVA_EFECTO_DESC">
+					<option value="fade">Fade</option>
+					<option value="slide">Slide</option>
+				</field>
+				<field name="showtext" type="radio" class="btn-group btn-group-yesno" default="0" label="Mostra titulo" description="mostrar el titulo y la descripcion">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+				<field name="efecoverlay" type="list" showon="showtext:1" class="chzn-color" default="fade" label="MOD_ALCYCLE2_EFECTO_TITULO" description="MOD_ALCYCLE2_EFECTO_TITULO_DESC">
+					<option value="fade">Fade</option>
+					<option value="slide">Slide</option>
+				</field>
+                <field name="count" type="text" showon="efecto:tileBlind" default="7" label="MOD_ALCYCLE2_COLUMNAS" description="MOD_ALCYCLE2_COLUMNAS_DESC" class="validate-numeric" filter="integer" />
+                <field name="vertical" type="radio" showon="efecto:tileBlind" class="btn-group btn-group-yesno" default="1" label="MOD_ALCYCLE2_VERTICAL" description="MOD_ALCYCLE2_VERTICAL_DESC">
+                    <option value="1">true</option>
+                    <option value="0">false</option>
+                </field>
+                <field name="count2" type="text" showon="efecto:tileSlide" default="7" label="MOD_ALCYCLE2_COLUMNAS" description="MOD_ALCYCLE2_COLUMNAS_DESC" class="validate-numeric" filter="integer" />
+                <field name="vertical2" type="radio" showon="efecto:tileSlide" class="btn-group btn-group-yesno" default="1" label="MOD_ALCYCLE2_VERTICAL" description="MOD_ALCYCLE2_VERTICAL_DESC">
+                    <option value="1">true</option>
+                    <option value="0">false</option>
+                </field>
+				<field name="linkautor" type="radio" class="btn-group btn-group-yesno" default="1"
+					label="MOD_ALCYCLE2_LINK_AUTOR" description="MOD_ALCYCLE2_LINK_AUTOR_DESC">
+					<option value="1">JYES</option>
+				   <option value="0">JNO</option>
+				</field>
+			</fieldset>
+			<fieldset name="imagefile" label="Folder de imagenes" addfieldpath="/modules/mod_alcycle2/fields/">
+				<field name="imagefolder" type="alfolder" default="true" label="MOD_ALCYCLE2_FILE" description="MOD_ALCYCLE2_FILE_DESC" hide_none="true" hide_default="true" size="10"/>
+				<field name="nummax" class="validate-numeric" type="text" default="20" size="10" label="MOD_ALCYCLE2_NUMERO_IMAGES" description="MOD_ALCYCLE2_NUMERO_IMAGES_DESC" filter="integer" />
+			</fieldset>
+			<fieldset name="imageslide" label="Image del slideshow">
+				<field name="img1" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg1" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg1" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img2" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg2" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg2" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img3" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg3" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg3" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img4" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg4" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg4" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img5" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg5" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg5" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img6" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg6" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg6" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img7" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg7" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg7" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img8" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg8" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg8" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img9" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg9" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg9" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+				<field type="spacer" default="" label="--------------------------------------------------" />
+				<field name="img10" type="media" directory="stories" label="MOD_ALCYCLE2_IMAGEN" description="MOD_ALCYCLE2_IMAGEN_DESC" />
+				<field name="titleimg10" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESC" />
+				<field name="descimg10" type="text" default="" size="30" label="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION" description="MOD_ALCYCLE2_IMAGEN_TITLE_DESCRIPTION_DESC" />
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL" description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+				<field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL" description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field name="cachemode" type="hidden" default="itemid">
+					<option value="itemid"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
