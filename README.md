@@ -1,2 +1,2 @@
 # mod_alcycle2
-modulo que usa jquery cycle2
+modulo realizado con el plugin cycle2, usted podra reproducir imagenes en la posicion que desee con distintos efectos. tiene dos opciones reproducir todas las imagenes de una carpeta o las que seleccione en este modulo.
